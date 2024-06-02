@@ -44,7 +44,7 @@ const OpenBlock = profiler.OpenBlock;
 const allocator = std.testing.allocator;
 
 // Setup global profiler...
-try profiler.setupGlobalProfiler(allocator, 64);
+try profiler.setupGlobalProfiler(allocator, 64); // Profilers have capacity, but they use std.ArrayList and can grow when needed
 var block = OpenBlock("A block");
 defer block.close();
 
