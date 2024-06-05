@@ -8,7 +8,7 @@ Minimalistic profiler tool for Zig.
 
 1. Add Miniprof to `build.zig.zon` dependencies
 
-Either run `zig fetch --save https://github.com/milanpoliak/miniprof/archive/refs/tags/v0.0.1.tar.gz`
+Either run `zig fetch --save https://github.com/milanpoliak/miniprof/archive/refs/tags/v0.0.2.tar.gz`
 
 or add it manually
 
@@ -16,7 +16,7 @@ or add it manually
 ...
 .dependencies = .{
     .miniprof = .{
-        .url = "https://github.com/milanpoliak/miniprof/archive/refs/tags/v0.0.1.tar.gz",
+        .url = "https://github.com/milanpoliak/miniprof/archive/refs/tags/v0.0.2.tar.gz",
         .hash = "...", // TODO:
     },
 },
@@ -66,6 +66,16 @@ Block           Exclusive time  % of total time  Total time  Hits
 ---------------------------------------------------------------------
 a block         11283703        0.24             9561689374  2       
 another block   4661619021      97.51            4769561005  290875 
+```
+
+### Disabling profiler
+
+For release builds, or any other situations you want the profiler to be disabled
+simply import the `disabled` module in your `build.zig`.
+The `disabled` module exposes all functions with the same signatures, but empty bodies.
+
+```zig
+exe.root_module.addImport("miniprof", miniprof.module("disabled"));
 ```
 
 ### Known limitations
