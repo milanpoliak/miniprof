@@ -8,19 +8,8 @@ Minimalistic profiler tool for Zig.
 
 1. Add Miniprof to `build.zig.zon` dependencies
 
-Either run `zig fetch --save https://github.com/milanpoliak/miniprof/archive/refs/tags/v0.0.2.tar.gz`
-
-or add it manually
-
-```zig
-...
-.dependencies = .{
-    .miniprof = .{
-        .url = "https://github.com/milanpoliak/miniprof/archive/refs/tags/v0.0.2.tar.gz",
-        .hash = "...", // TODO:
-    },
-},
-...
+```shell
+zig fetch --save https://github.com/milanpoliak/miniprof/archive/refs/tags/v0.1.0.tar.gz
 ```
 
 2. Add Miniprof to `build.zig`
