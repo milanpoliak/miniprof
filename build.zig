@@ -16,17 +16,13 @@ pub fn build(b: *std.Build) void {
     const optimize = b.standardOptimizeOption(.{});
 
     _ = b.addModule("miniprof", .{
-        .root_source_file = .{
-            .src_path = .{ .sub_path = "src/root.zig", .owner = b }
-        },
+        .root_source_file = b.path("src/root.zig"),
         .target = target,
         .optimize = optimize,
     });
 
     _ = b.addModule("disabled", .{
-        .root_source_file = .{
-            .src_path = .{ .sub_path = "src/disabled.zig", .owner = b }
-        },
+        .root_source_file = b.path("src/disabled.zig"),
         .target = target,
         .optimize = optimize,
     });
@@ -34,9 +30,7 @@ pub fn build(b: *std.Build) void {
     // Creates a step for unit testing. This only builds the test executable
     // but does not run it.
     const lib_unit_tests = b.addTest(.{
-        .root_source_file = .{
-            .src_path = .{ .sub_path = "src/root.zig", .owner = b }
-        },
+        .root_source_file = b.path("src/root.zig"),
         .target = target,
         .optimize = optimize,
     });
